@@ -68,7 +68,7 @@ public class GoogleTest {
 				By.xpath("//a[@href='http://www.easyhits4u.com/account']"))
 				.click();
 
-		/*// add a site
+		// add a site
 
 		new WebDriverWait(driver, 15).until(ExpectedConditions
 				.visibilityOfElementLocated(By
@@ -91,7 +91,7 @@ public class GoogleTest {
 
 		driver.switchTo().defaultContent();
 
-		// check stats and close chart
+		// check site stats and close chart
 
 		new WebDriverWait(driver, 5)
 				.until(ExpectedConditions.visibilityOfElementLocated(By
@@ -107,7 +107,7 @@ public class GoogleTest {
 		
 		
 		driver.findElement(By.xpath("//span[text()='close']"))
-				.click();*/
+				.click();
 		
 		
 		// add a text add
@@ -134,7 +134,7 @@ public class GoogleTest {
 		
 		driver.switchTo().defaultContent();
 		
-		// check ads stats
+		// check ads stats and close
 		
 		new WebDriverWait(driver, 5).until(ExpectedConditions
 				.visibilityOfElementLocated(By
