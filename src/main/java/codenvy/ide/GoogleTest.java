@@ -68,7 +68,7 @@ public class GoogleTest {
 				By.xpath("//a[@href='http://www.easyhits4u.com/account']"))
 				.click();
 
-		// add a site
+		// add a site /
 
 		new WebDriverWait(driver, 15).until(ExpectedConditions
 				.visibilityOfElementLocated(By
@@ -100,59 +100,83 @@ public class GoogleTest {
 		driver.findElement(
 				By.xpath("//table[@id='my_sites']//a[text()='Pravda']/../..//div[@title='Statistics']"))
 				.click();
-		
+
 		new WebDriverWait(driver, 5).until(ExpectedConditions
-				.visibilityOfElementLocated(By
-						.id("chartdivthree")));
-		
-		
-		driver.findElement(By.xpath("//span[text()='close']"))
+				.visibilityOfElementLocated(By.id("chartdivthree")));
+
+		driver.findElement(By.xpath("//span[text()='close']")).click();
+
+		// edit site
+
+		new WebDriverWait(driver, 2)
+				.until(ExpectedConditions.visibilityOfElementLocated(By
+						.xpath("//table[@id='my_sites']//a[text()='Pravda']/../..//div[@title='Edit']")));
+
+		driver.findElement(
+				By.xpath("//table[@id='my_sites']//a[text()='Pravda']/../..//div[@title='Edit']"))
 				.click();
+
+		new WebDriverWait(driver, 5).until(ExpectedConditions
+				.visibilityOfElementLocated(By.id("edit_form")));
 		
 		
+		driver.findElement(By.xpath("//*[@id='edit_form']/table/tbody/tr[2]/td[2]/input")).clear();
+		driver.findElement(By.xpath("//*[@id='edit_form']/table/tbody/tr[2]/td[2]/input")).sendKeys("data1");
+		
+
+		driver.findElement(By.xpath("//*[@id='edit_form']/table/tbody/tr[9]/td[2]/input")).click();
+		
+		
+		
+		new WebDriverWait(driver, 5)
+		.until(ExpectedConditions.visibilityOfElementLocated(By
+				.xpath("//table[@id='my_sites']//a[text()='data1']/../..//div[@title='Edit']")));
+		
+
+
 		// add a text add
-		
+
 		new WebDriverWait(driver, 5).until(ExpectedConditions
 				.visibilityOfElementLocated(By
 						.xpath("//*[@id='my_text_ads_block']/a")));
-		driver.findElement(By.xpath("//*[@id='my_text_ads_block']/a"))
-				.click();
-		
-		driver.switchTo().frame(
-				driver.findElement(By.xpath("//*[@id='textad_submit']/tbody/tr[1]/td/div/div[2]/div[4]/iframe")));
-		driver.findElement(By.xpath("/html/body")).sendKeys("This is my first ad");
-		
+		driver.findElement(By.xpath("//*[@id='my_text_ads_block']/a")).click();
+
+		driver.switchTo()
+				.frame(driver.findElement(By
+						.xpath("//*[@id='textad_submit']/tbody/tr[1]/td/div/div[2]/div[4]/iframe")));
+		driver.findElement(By.xpath("/html/body")).sendKeys(
+				"This is my first ad");
+
 		driver.switchTo().defaultContent();
-		
-		driver.switchTo().frame(
-				driver.findElement(By.xpath("//*[@id='textad_submit']/tbody/tr[2]/td[2]/iframe")));
-		driver.findElement(By.xpath("html/body")).sendKeys("Hello, this is a hover text");
+
+		driver.switchTo()
+				.frame(driver.findElement(By
+						.xpath("//*[@id='textad_submit']/tbody/tr[2]/td[2]/iframe")));
+		driver.findElement(By.xpath("html/body")).sendKeys(
+				"Hello, this is a hover text");
 		driver.switchTo().defaultContent();
-		
+
 		driver.findElement(By.name("url")).sendKeys("www.pravda.com.ua");
 		driver.findElement(By.xpath("//*[@id='submit_button']")).click();
-		
+
 		driver.switchTo().defaultContent();
-		
+
 		// check ads stats and close
-		
-		new WebDriverWait(driver, 5).until(ExpectedConditions
-				.visibilityOfElementLocated(By
+
+		new WebDriverWait(driver, 5)
+				.until(ExpectedConditions.visibilityOfElementLocated(By
 						.xpath("//*[@id='my_sites']/tbody/tr[2]/td[3]/div/div[1]")));
-		
-		
-		driver.findElement(By.xpath("//*[@id='my_sites']/tbody/tr[2]/td[3]/div/div[1]"))
+
+		driver.findElement(
+				By.xpath("//*[@id='my_sites']/tbody/tr[2]/td[3]/div/div[1]"))
 				.click();
-		
-		
-		new WebDriverWait(driver, 5).until(ExpectedConditions
-				.visibilityOfElementLocated(By
+
+		new WebDriverWait(driver, 5)
+				.until(ExpectedConditions.visibilityOfElementLocated(By
 						.xpath("//span[text()='close']")));
-		
-		
-		driver.findElement(By.xpath("//span[text()='close']"))
-				.click();
-	
+
+		driver.findElement(By.xpath("//span[text()='close']")).click();
+
 		driver.close();
 	}
 }
